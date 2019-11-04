@@ -4,6 +4,11 @@ import java.nio.file.AccessDeniedException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -14,7 +19,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.pramati.crs.booking.dto.MessageDTO;
 
 @ControllerAdvice
-public class APIExceptionHandler {
+public class APIExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<MessageDTO> handleException(Exception e) {
@@ -25,8 +30,7 @@ public class APIExceptionHandler {
 		return new ResponseEntity<>(new MessageDTO(errorMessage), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	@ExceptionHandler({ MethodArgumentNotValidException.class, BindException.class,
-			HttpMessageNotReadableException.class, HttpRequestMethodNotSupportedException.class })
+	@ExceptionHandler({ MethodArgumentNotValidException.class, BindException.class, })
 	public ResponseEntity<MessageDTO> handleDataValidationException(Exception e) {
 		String errorMessage = null;
 
@@ -36,14 +40,7 @@ public class APIExceptionHandler {
 		} else if (e instanceof MethodArgumentNotValidException) {
 			MethodArgumentNotValidException me = (MethodArgumentNotValidException) e;
 			errorMessage = me.getBindingResult().getFieldError().getDefaultMessage();
-		} else if (e instanceof HttpMessageNotReadableException) {
-			HttpMessageNotReadableException je = (HttpMessageNotReadableException) e;
-			errorMessage = je.getMostSpecificCause().getMessage();
-		} else if (e instanceof HttpRequestMethodNotSupportedException) {
-			HttpRequestMethodNotSupportedException he = (HttpRequestMethodNotSupportedException) e;
-			errorMessage = he.getMessage();
-		}
-
+      }
 		return new ResponseEntity<>(new MessageDTO(errorMessage), HttpStatus.BAD_REQUEST);
 	}
 

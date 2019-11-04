@@ -10,6 +10,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @author manikanth
  */
 
+
 @SpringBootApplication
 @EnableZuulProxy
 @EnableDiscoveryClient

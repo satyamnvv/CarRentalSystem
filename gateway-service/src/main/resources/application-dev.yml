@@ -1,3 +1,6 @@
+server:
+  port: 8091
+  
 zuul:
    routes:
       auth-service:
@@ -19,5 +22,3 @@ zuul:
       profile-service:
          path: /profile-service/**
          url: http://localhost:8095
-auth:
-   url: http://localhost:8096

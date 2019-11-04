@@ -1,7 +1,10 @@
 server:
   port: 8093
-  servlet:
-    context-path: /booking-service/v1/
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9091/eureka
   
 spring:
   datasource:

@@ -28,7 +28,7 @@ import com.pramati.crs.fare.service.FareService;
  *
  */
 @RestController
-@RequestMapping("/fares")
+@RequestMapping("/v1/fares")
 @EnableHypermediaSupport(type = HypermediaType.HAL)
 public class FareController {
 
