@@ -13,7 +13,6 @@ import org.springframework.web.filter.ForwardedHeaderFilter;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients("com.pramati.crs.booking.client")
-@SpringBootApplication
 public class BookingServiceApplication {
 
 	public static void main(String[] args) {

@@ -1,5 +1,7 @@
 package com.pramati.crs.config;
 
+import java.util.ArrayList;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -22,10 +24,12 @@ public class SweggerConfig {
 
 	@Bean
 	public Docket api() {
+		ArrayList<Integer> a = new ArrayList<Integer>(10);
 		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors
 				.basePackage("com.pramati.crs.controller"))
 	            .paths(PathSelectors.regex("/.*"))
 	            .build().apiInfo(apiEndPointsInfo());
+	
 	}
 
 	private ApiInfo apiEndPointsInfo() {
@@ -34,5 +38,6 @@ public class SweggerConfig {
                 .version("1.0.0")
                 .build();
 	}
+	
 	
 }
