@@ -13,31 +13,30 @@ import org.springframework.hateoas.ResourceSupport;
 
 @Entity
 @Table(name = "RS_FARE")
-public class Fare extends ResourceSupport{
+public class Fare extends ResourceSupport {
 
-	@Id
+@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private long fareId;
-	
 	@Column(name = "CAR_CATEGORY")
 	private String carCategory;
-	
+
 	@Column(name = "CAR_TYPE")
 	private String carType;
-	
+
 	@Column(name = "VENDOR_ID")
 	private long vendorId;
-	
+
 	@Column(name = "PRICE_PER_DAY")
 	private double pricePerDay;
-	
+
 	@Column(name = "EFFECTIVE_FROM")
 	private Date effectiveFrom;
-	
+
 	@Column(name = "EFFECTIVE_UPTO")
 	private Date effectiveUpto;
-	
+
 	@Column(name = "IS_ACTIVE")
 	private boolean isActive;
 

@@ -1,9 +1,16 @@
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN      
+    
 server:
    port: 8095
 
 spring: 
     profiles:
-      active: mysql   
+      active: h2
+
+   
       
 
   

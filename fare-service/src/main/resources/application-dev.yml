@@ -1,11 +1,14 @@
 server:
   port: 8094
-  servlet:
-    context-path: /fare-service/v1/
+   
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9091/eureka
   
 spring:
   datasource:
-    url: jdbc:h2:mem:faressDB
+    url: jdbc:h2:mem:faresDB
     driver-class-name: org.h2.Driver
     username: root
     password: root

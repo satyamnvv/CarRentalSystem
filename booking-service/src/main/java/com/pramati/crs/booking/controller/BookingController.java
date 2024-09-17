@@ -29,7 +29,7 @@ import com.pramati.crs.booking.service.BookingService;
  *
  */
 @RestController
-@RequestMapping("/bookings")
+@RequestMapping("/v1/bookings")
 @EnableHypermediaSupport(type = HypermediaType.HAL)
 public class BookingController {
 
